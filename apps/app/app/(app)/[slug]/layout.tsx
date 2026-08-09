@@ -47,7 +47,7 @@ async function WorkspaceHeader({
 	const workspacePromise = getServerQueryClient()
 		.fetchQuery(getServerTrpc().workspace.get.queryOptions())
 		.catch((error: unknown) => {
-			unstable_rethrow(error);
+			console.error("Workspace header: could not load workspace.", error);
 			return null;
 		});
 	const [{ user }, { slug }, workspace] = await Promise.all([

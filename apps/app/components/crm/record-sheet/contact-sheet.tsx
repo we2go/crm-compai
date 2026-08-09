@@ -381,6 +381,13 @@ function ContactOverview({ contact }: { contact: Contact }) {
 						onSave={(githubUrl) => save({ githubUrl })}
 						{...agentProps("githubUrl")}
 					/>
+					<InlineField
+						label="Instagram"
+						value={contact.instagramUrl}
+						type="url"
+						saving={isSaving("instagramUrl")}
+						onSave={(instagramUrl) => save({ instagramUrl })}
+					/>
 					<InlineSelectField
 						label="Company"
 						value={contact.company?.id ?? NONE}

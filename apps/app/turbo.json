@@ -39,6 +39,7 @@
 				"BETTER_AUTH_URL",
 				"DATABASE_URL",
 				"IS_MARKETING",
+				"API_URL",
 				"NEXT_PUBLIC_API_URL",
 				"NEXT_PUBLIC_AUTH_URL"
 			]

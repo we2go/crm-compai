@@ -1,4 +1,5 @@
 import LogoGithub from "@carbon/icons-react/es/LogoGithub";
+import LogoInstagram from "@carbon/icons-react/es/LogoInstagram";
 import LogoLinkedin from "@carbon/icons-react/es/LogoLinkedin";
 import LogoX from "@carbon/icons-react/es/LogoX";
 import Money from "@carbon/icons-react/es/Money";
@@ -11,6 +12,7 @@ export type CompanyLinks = {
 	linkedinUrl: string | null;
 	twitterUrl: string | null;
 	githubUrl: string | null;
+	instagramUrl: string | null;
 	pricingUrl: string | null;
 	careersUrl: string | null;
 };
@@ -19,12 +21,14 @@ export type ContactLinks = {
 	linkedinUrl: string | null;
 	twitterUrl: string | null;
 	githubUrl: string | null;
+	instagramUrl: string | null;
 };
 
 const COMPANY_LINKS: SocialLink<CompanyLinks>[] = [
 	{ key: "linkedinUrl", label: "LinkedIn", icon: LogoLinkedin },
 	{ key: "twitterUrl", label: "X", icon: LogoX },
 	{ key: "githubUrl", label: "GitHub", icon: LogoGithub },
+	{ key: "instagramUrl", label: "Instagram", icon: LogoInstagram },
 	{ key: "pricingUrl", label: "Pricing", icon: Money },
 	{ key: "careersUrl", label: "Careers", icon: UserMultiple },
 ];
@@ -33,6 +37,7 @@ const CONTACT_LINKS: SocialLink<ContactLinks>[] = [
 	{ key: "linkedinUrl", label: "LinkedIn", icon: LogoLinkedin },
 	{ key: "twitterUrl", label: "X", icon: LogoX },
 	{ key: "githubUrl", label: "GitHub", icon: LogoGithub },
+	{ key: "instagramUrl", label: "Instagram", icon: LogoInstagram },
 ];
 
 function present<T>(record: T, links: SocialLink<T>[]) {

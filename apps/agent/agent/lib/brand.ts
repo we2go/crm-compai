@@ -37,6 +37,7 @@ const COMPANY_FIELDS = {
 	linkedinUrl: true,
 	twitterUrl: true,
 	githubUrl: true,
+	instagramUrl: true,
 	pricingUrl: true,
 	careersUrl: true,
 } as const;

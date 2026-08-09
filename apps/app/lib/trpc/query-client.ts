@@ -2,6 +2,7 @@ import {
 	defaultShouldDehydrateQuery,
 	QueryClient,
 } from "@tanstack/react-query";
+import { cache } from "react";
 
 export function makeQueryClient(): QueryClient {
 	return new QueryClient({
@@ -31,12 +32,16 @@ function retryQuery(failureCount: number, error: unknown): boolean {
 	return failureCount < 1;
 }
 
+const getServerQueryClient = cache(makeQueryClient);
+
 let browserQueryClient: QueryClient | undefined;
 
 export function getQueryClient(): QueryClient {
 	if (typeof window === "undefined") {
-		return makeQueryClient();
+		return getServerQueryClient();
 	}
 	browserQueryClient ??= makeQueryClient();
 	return browserQueryClient;
 }
+
+export { getServerQueryClient };

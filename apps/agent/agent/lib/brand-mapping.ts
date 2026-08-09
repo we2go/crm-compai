@@ -24,6 +24,7 @@ export type CompanySnapshot = {
 	linkedinUrl: string | null;
 	twitterUrl: string | null;
 	githubUrl: string | null;
+	instagramUrl: string | null;
 	pricingUrl: string | null;
 	careersUrl: string | null;
 };
@@ -151,6 +152,7 @@ export function brandToUpdate(
 		social(brand.socials, "x") ?? social(brand.socials, "twitter"),
 	);
 	fill("githubUrl", social(brand.socials, "github"));
+	fill("instagramUrl", social(brand.socials, "instagram"));
 
 	fill("pricingUrl", clean(brand.links?.pricing));
 	fill("careersUrl", clean(brand.links?.careers));

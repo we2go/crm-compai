@@ -460,6 +460,42 @@ describe("a select option that was taken away", () => {
 	});
 });
 
+describe("company updates", () => {
+	it("persists company social and profile urls", async () => {
+		const record = await makeCompany("company-urls");
+
+		await companies.update(record, {
+			linkedinUrl: "https://www.linkedin.com/company/acme",
+			twitterUrl: "https://x.com/acme",
+			githubUrl: "https://github.com/acme",
+			instagramUrl: "https://www.instagram.com/acme",
+			pricingUrl: "https://acme.com/pricing",
+			careersUrl: "https://acme.com/careers",
+		});
+
+		const updated = await db.company.findUniqueOrThrow({
+			where: { id: record },
+			select: {
+				linkedinUrl: true,
+				twitterUrl: true,
+				githubUrl: true,
+				instagramUrl: true,
+				pricingUrl: true,
+				careersUrl: true,
+			},
+		});
+
+		expect(updated).toEqual({
+			linkedinUrl: "https://www.linkedin.com/company/acme",
+			twitterUrl: "https://x.com/acme",
+			githubUrl: "https://github.com/acme",
+			instagramUrl: "https://www.instagram.com/acme",
+			pricingUrl: "https://acme.com/pricing",
+			careersUrl: "https://acme.com/careers",
+		});
+	});
+});
+
 describe("a record update that fails", () => {
 	it("leaves a company's field values as they were", async () => {
 		const record = await makeCompany("company-rollback");

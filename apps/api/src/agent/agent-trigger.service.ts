@@ -217,10 +217,21 @@ export class AgentTriggerService {
 					...(task.contactId ? { contactId: task.contactId } : {}),
 					...(task.companyId ? { companyId: task.companyId } : {}),
 				},
-				select: { id: true },
+				select: { id: true, priority: true, budget: true },
 			});
 
-			if (pending) return;
+			if (pending) {
+				await this.db.agentTask.update({
+					where: { id: pending.id },
+					data: {
+						priority: Math.max(pending.priority, task.priority),
+						budget: Math.max(pending.budget, task.budget),
+						reason: task.reason,
+						dueAt: new Date(),
+					},
+				});
+				return;
+			}
 
 			await this.db.agentTask.create({
 				data: {

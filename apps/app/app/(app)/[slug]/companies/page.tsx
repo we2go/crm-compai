@@ -58,10 +58,18 @@ async function Companies({
 	const trpc = getServerTrpc();
 	const queryClient = getServerQueryClient();
 	await Promise.all([
-		queryClient.prefetchQuery(
-			trpc.companies.list.queryOptions(companiesSearchParams.toInput(values)),
-		),
-		queryClient.prefetchQuery(trpc.users.list.queryOptions()),
+		queryClient
+			.prefetchQuery(
+				trpc.companies.list.queryOptions(companiesSearchParams.toInput(values)),
+			)
+			.catch((error: unknown) => {
+				console.error("Companies page: could not prefetch companies.", error);
+			}),
+		queryClient
+			.prefetchQuery(trpc.users.list.queryOptions())
+			.catch((error: unknown) => {
+				console.error("Companies page: could not prefetch users.", error);
+			}),
 	]);
 
 	return (

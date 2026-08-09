@@ -6,11 +6,10 @@ import {
 } from "@trpc/tanstack-react-query";
 import type { AppRouter } from "api/app-router";
 import { cookies } from "next/headers";
-import { cache } from "react";
 import { API_URL } from "@/lib/env";
-import { makeQueryClient } from "./query-client";
+import { getQueryClient } from "./query-client";
 
-export const getServerQueryClient = cache(makeQueryClient);
+export { getQueryClient as getServerQueryClient } from "./query-client";
 
 export function getServerTrpcClient(): TRPCClient<AppRouter> {
 	return createTRPCClient<AppRouter>({
@@ -31,6 +30,6 @@ export function getServerTrpc(): TRPCOptionsProxy<AppRouter> {
 
 	return createTRPCOptionsProxy<AppRouter>({
 		client,
-		queryClient: getServerQueryClient,
+		queryClient: getQueryClient,
 	});
 }

@@ -364,6 +364,12 @@ function CompanyOverview({
 								onSave={(name) => name && save({ name })}
 							/>
 							<InlineField
+								label="About"
+								value={company.description}
+								saving={isSaving("description")}
+								onSave={(description) => save({ description })}
+							/>
+							<InlineField
 								label="Domain"
 								value={company.domain}
 								type="url"
@@ -394,6 +400,41 @@ function CompanyOverview({
 								onSave={(email) => save({ email })}
 							/>
 							<InlineField
+								label="LinkedIn"
+								value={company.linkedinUrl}
+								type="url"
+								saving={isSaving("linkedinUrl")}
+								onSave={(linkedinUrl) => save({ linkedinUrl })}
+							/>
+							<InlineField
+								label="X"
+								value={company.twitterUrl}
+								type="url"
+								saving={isSaving("twitterUrl")}
+								onSave={(twitterUrl) => save({ twitterUrl })}
+							/>
+							<InlineField
+								label="GitHub"
+								value={company.githubUrl}
+								type="url"
+								saving={isSaving("githubUrl")}
+								onSave={(githubUrl) => save({ githubUrl })}
+							/>
+							<InlineField
+								label="Pricing"
+								value={company.pricingUrl}
+								type="url"
+								saving={isSaving("pricingUrl")}
+								onSave={(pricingUrl) => save({ pricingUrl })}
+							/>
+							<InlineField
+								label="Careers"
+								value={company.careersUrl}
+								type="url"
+								saving={isSaving("careersUrl")}
+								onSave={(careersUrl) => save({ careersUrl })}
+							/>
+							<InlineField
 								label="City"
 								value={company.city}
 								saving={isSaving("city")}
@@ -418,6 +459,13 @@ function CompanyOverview({
 								onSave={(ownerId) =>
 									save({ ownerId: ownerId === UNASSIGNED ? null : ownerId })
 								}
+							/>
+							<InlineField
+								label="Instagram"
+								value={company.instagramUrl}
+								type="url"
+								saving={isSaving("instagramUrl")}
+								onSave={(instagramUrl) => save({ instagramUrl })}
 							/>
 							<RecordFields
 								fields={company.fields}

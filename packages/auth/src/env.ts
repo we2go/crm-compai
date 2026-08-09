@@ -63,11 +63,11 @@ export const env = {
 } as const;
 
 export function isGoogleConfigured(): boolean {
-	return env.google !== undefined;
+	return googleCredentials() !== undefined;
 }
 
 export function isMicrosoftConfigured(): boolean {
-	return env.microsoft !== undefined;
+	return microsoftCredentials() !== undefined;
 }
 
 export { apiUrl, appUrl };

@@ -59,6 +59,7 @@ export type CompanyRow = {
 	logoUrl: string | null;
 	brandColor: string | null;
 	industry: string | null;
+	instagramUrl: string | null;
 	enrichmentStatus: EnrichmentStatus;
 	queued: boolean;
 	source: RecordSource;
@@ -125,6 +126,7 @@ export class CompaniesService {
 					logoUrl: true,
 					brandColor: true,
 					industry: true,
+					instagramUrl: true,
 					enrichmentStatus: true,
 					source: true,
 					owner: { select: OWNER_SELECT },
@@ -159,6 +161,7 @@ export class CompaniesService {
 				logoUrl: row.logoUrl,
 				brandColor: row.brandColor,
 				industry: row.industry,
+				instagramUrl: row.instagramUrl,
 				enrichmentStatus: row.enrichmentStatus,
 				queued: queued.has(row.id),
 				source: row.source,
@@ -200,6 +203,7 @@ export class CompaniesService {
 				linkedinUrl: true,
 				twitterUrl: true,
 				githubUrl: true,
+				instagramUrl: true,
 				pricingUrl: true,
 				careersUrl: true,
 				enrichmentStatus: true,
@@ -338,6 +342,21 @@ export class CompaniesService {
 		if (input.email !== undefined) data.email = blankToNull(input.email);
 		if (input.linkedinUrl !== undefined) {
 			data.linkedinUrl = blankToNull(input.linkedinUrl);
+		}
+		if (input.twitterUrl !== undefined) {
+			data.twitterUrl = blankToNull(input.twitterUrl);
+		}
+		if (input.githubUrl !== undefined) {
+			data.githubUrl = blankToNull(input.githubUrl);
+		}
+		if (input.instagramUrl !== undefined) {
+			data.instagramUrl = blankToNull(input.instagramUrl);
+		}
+		if (input.pricingUrl !== undefined) {
+			data.pricingUrl = blankToNull(input.pricingUrl);
+		}
+		if (input.careersUrl !== undefined) {
+			data.careersUrl = blankToNull(input.careersUrl);
 		}
 		if (input.ownerId !== undefined) {
 			data.owner = input.ownerId

@@ -32,6 +32,7 @@ const contactUpdateInput = z.object({
 	linkedinUrl: z.string().optional(),
 	twitterUrl: z.string().optional(),
 	githubUrl: z.string().optional(),
+	instagramUrl: z.string().optional(),
 	companyId: z.string().nullable().optional(),
 	ownerId: z.string().nullable().optional(),
 	fields: recordFieldValues.optional(),
